@@ -1,21 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta property="og:title" content="Mux Video" />
-    <meta property="og:type" content="video.episode" />
-    <meta property="og:description" content="MP4 video asset for Open Graph Cards" />
-    <meta property="og:image" content="https://image.mux.com/YwWFmJgrB6NXLRs102em1EhyOn20201Pk7hAtU5AC01yRhA/thumbnail.png" />
-    <meta property="og:video" content="https://www.w3schools.com/html/mov_bbb.mp4" />
-    <meta property="og:video:width" content="350">
-    <meta property="og:video:height" content="200">
-    <meta property="og:video:duration" content="300">
-    <meta property="og:url" content="http://mux.com">
-  </head>
-  <body>
-    <video
-      id="my-player"
-      controls
-      style="width: 100%; max-width: 500px;"
-    />
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sofia flies to Sasha</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            flex-direction: column;
+        }
+        #countdown {
+            font-size: 3rem;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            margin: 0 0 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sofia flies to Sasha</h1>
+    <h2>Time left until the meeting:</h2>
+    <div id="countdown">Loading...</div>
+
+    <script>
+        function countdown() {
+            const countdownElement = document.getElementById('countdown');
+            const eventDate = new Date('July 30, 2024 17:00:00 GMT+0300'); // Istanbul timezone (GMT+3)
+            const now = new Date();
+
+            const totalTime = eventDate - now;
+            
+            const days = Math.floor(totalTime / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((totalTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((totalTime % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((totalTime % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (totalTime < 0) {
+                clearInterval(countdownInterval);
+                countdownElement.innerHTML = "The event has started!";
+            }
+        }
+
+        const countdownInterval = setInterval(countdown, 1000);
+    </script>
+</body>
 </html>
