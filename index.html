@@ -14,6 +14,7 @@
             margin: 0;
             background-color: #f0f0f0;
             flex-direction: column;
+            text-align: center;
         }
         #countdown {
             font-size: 3rem;
@@ -50,8 +51,7 @@
 
             if (totalTime < 0) {
                 clearInterval(countdownInterval);
-                subtitleElement.innerHTML = "Time to hug 💞";
-                countdownElement.innerHTML = "";
+                document.body.innerHTML = "<h1>Time to hugs 🏄‍♂️</h1>";
             }
         }
 
