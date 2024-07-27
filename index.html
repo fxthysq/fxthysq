@@ -37,7 +37,7 @@
         function countdown() {
             const countdownElement = document.getElementById('countdown');
             const subtitleElement = document.getElementById('subtitle');
-            const eventDate = new Date('July 3, 2024 17:00:00 GMT+0300'); // Istanbul timezone (GMT+3)
+            const eventDate = new Date('July 30, 2024 17:00:00 GMT+0300'); // Istanbul timezone (GMT+3)
             const now = new Date();
 
             const totalTime = eventDate - now;
@@ -51,7 +51,7 @@
 
             if (totalTime < 0) {
                 clearInterval(countdownInterval);
-                document.body.innerHTML = "<h1>Time to hugs 🏄‍♂️</h1>";
+                document.body.innerHTML = "<h1>Time to hugs 💞</h1>";
             }
         }
 
