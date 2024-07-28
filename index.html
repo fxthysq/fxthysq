@@ -15,6 +15,7 @@
             background-color: #f0f0f0;
             flex-direction: column;
             text-align: center;
+            overflow: hidden;
         }
         #countdown {
             font-size: 3rem;
@@ -22,9 +23,25 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            cursor: pointer;
         }
         h1, h2 {
             margin: 0 0 20px 0;
+        }
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            animation: fly 2s ease-in-out forwards;
+        }
+        @keyframes fly {
+            from {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            to {
+                transform: translate(0, -100vh);
+                opacity: 0;
+            }
         }
     </style>
 </head>
@@ -54,6 +71,20 @@
                 document.body.innerHTML = "<h1>Time to hugs 💞</h1>";
             }
         }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.textContent = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            document.body.appendChild(heart);
+
+            heart.addEventListener('animationend', () => {
+                heart.remove();
+            });
+        }
+
+        document.getElementById('countdown').addEventListener('click', createHeart);
 
         const countdownInterval = setInterval(countdown, 1000);
     </script>
