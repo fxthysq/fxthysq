@@ -25,7 +25,7 @@
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             position: relative;
         }
-        h1 {
+        h1, h2 {
             margin: 0 0 20px 0;
         }
         .heart {
@@ -46,12 +46,14 @@
     </style>
 </head>
 <body>
-    <h1>Time left until our hugs</h1>
+    <h1>Sofia flies to Sasha</h1>
+    <h2 id="subtitle">Time left until the meeting:</h2>
     <div id="countdown">Loading...</div>
 
     <script>
         function countdown() {
             const countdownElement = document.getElementById('countdown');
+            const subtitleElement = document.getElementById('subtitle');
             const eventDate = new Date('July 30, 2024 17:00:00 GMT+0300'); // Istanbul timezone (GMT+3)
             const now = new Date();
 
@@ -72,17 +74,11 @@
 
         function createHeart() {
             const countdownElement = document.getElementById('countdown');
-            const rect = countdownElement.getBoundingClientRect();
             const heart = document.createElement('div');
             heart.classList.add('heart');
             heart.textContent = '❤️';
-
-            const randomX = Math.random() * rect.width;
-            const randomY = Math.random() * rect.height;
-
-            heart.style.left = `${rect.left + randomX}px`;
-            heart.style.top = `${rect.top + randomY}px`;
-
+            heart.style.left = (countdownElement.offsetLeft + countdownElement.clientWidth / 2) + 'px';
+            heart.style.top = countdownElement.offsetTop + 'px';
             document.body.appendChild(heart);
 
             heart.addEventListener('animationend', () => {
